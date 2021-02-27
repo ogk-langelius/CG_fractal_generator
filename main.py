@@ -116,33 +116,6 @@ def draw_l_system(axiom, rules, iters, angle):
             trtl.rotate(angle)
 
 
-def blink():
-    while True:
-        base = c.create_polygon(*base_crds, fill='grey', outline='blue')
-        rare = c.create_polygon(*rare_crds, fill='grey', outline='orange')
-        right = c.create_polygon(*right_crds, fill='grey', outline='green')
-        left = c.create_polygon(*left_crds, fill='grey', outline='pink')
-        time.sleep(0.4)
-        c.itemconfig(base, outline='blue')
-        c.itemconfig(rare, outline='orange')
-        c.itemconfig(right, outline='green')
-        c.itemconfig(left, outline='purple')
-        time.sleep(0.4)
-        c.itemconfig(base, outline='cyan')
-        c.itemconfig(rare, outline='yellow')
-        c.itemconfig(right, outline='lime')
-        c.itemconfig(left, outline='pink')
-        c.delete(base)
-        c.delete(rare)
-        c.delete(right)
-        c.delete(left)
-        time.sleep(0.4)
-
-def blink_and_spin():
-    t1 = th.Thread(target=blink)
-    t1.start()
-
-
 root = Tk()
 
 c = Canvas(width=xsize, height=ysize, bg='grey')
@@ -150,24 +123,7 @@ c.focus_set()
 c.pack()
 fern()
 
-A = [331, 250]
-B = [430, 200]
-C = [430, 300]
-D = [397, 250]
-
-base_crds = [A[0], A[1], B[0], B[1], C[0], C[1]]
-rare_crds = [A[0], A[1], B[0], B[1], D[0], D[1]]
-right_crds = [B[0], B[1], C[0], C[1], D[0], D[1]]
-left_crds = [A[0], A[1], C[0], C[1], D[0], D[1]]
-
-base = c.create_polygon(*base_crds, fill='grey', outline='blue')
-rare = c.create_polygon(*rare_crds, fill='grey', outline='orange')
-right = c.create_polygon(*right_crds, fill='grey', outline='green')
-left = c.create_polygon(*left_crds, fill='grey', outline='pink')
-
 trtl = Turtle(c)
-
-blink_and_spin()
 
 mn = Menu(root)
 root.config(menu=mn)
